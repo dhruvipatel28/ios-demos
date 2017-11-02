@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Data</key>
+	<dict>
+        <!-- Q1 -->
+		<key>Q1</key>
+        <array>
+            <string>January 15 is celebrated as the :?</string>
+            <string>Republic Day</string>
+            <string>Ugadhi</string>
+            <string>Teachers' Day</string>
+            <string>Army Day </string>
+            <string>4</string>
+        </array>
+        <!-- Q2 -->
+        <key>Q2</key>
+        <array>
+            <string>The World Largest desert is ?</string>
+            <string>Thar</string>
+            <string>Kalahari</string>
+            <string>Sahara</string>
+            <string>Sonoran</string>
+            <string>3</string>
+        </array>
+        <!-- Q3 -->
+        <key>Q3</key>
+        <array>
+            <string>Which is considered as the biggest port of India ?</string>
+            <string>Kolkota</string>
+            <string>Cochin</string>
+            <string>Chennai</string>
+            <string>Mumbai</string>
+            <string>4</string>
+        </array>
+        <!-- Q4 -->
+        <key>Q4</key>
+        <array>
+            <string>The state which has desert in India is ?</string>
+            <string>Rajasthan</string>
+            <string>Punjab</string>
+            <string>Uttar Pradesh</string>
+            <string>Madhya Pradesh</string>
+            <string>1</string>
+        </array>
+        <!-- Q5 -->
+        <key>Q5</key>
+        <array>
+            <string>The largest fresh water lake in India is ?</string>
+            <string>Pulicat Lake</string>
+            <string>Veeranam lake</string>
+            <string>Chilka Lake</string>
+            <string>Kolleru Lake</string>
+            <string>4</string>
+        </array>
+        <!-- Q6 -->
+        <key>Q6</key>
+        <array>
+            <string>The largest river in India is ?</string>
+            <string>Yamuna</string>
+            <string>Kaveri</string>
+            <string>Ganga</string>
+            <string>Bramaputra</string>
+            <string>3</string>
+        </array>
+        <!-- Q7 -->
+        <key>Q7</key>
+        <array>
+            <string>Punjab is famous for ?</string>
+            <string>Nylon textile</string>
+            <string>Silk textile</string>
+            <string>Woolen textile</string>
+            <string>Cotton textile</string>
+            <string>3</string>
+        </array>
+        <!-- Q8 -->
+        <key>Q8</key>
+        <array>
+            <string>The state that has the largest number of Cotton textile mills ?</string>
+            <string>Maharashtra</string>
+            <string>Andhra Pradesh</string>
+            <string>Madhya Pradesh</string>
+            <string>Gujarat</string>
+            <string>1</string>
+        </array>
+        <!-- Q9 -->
+        <key>Q9</key>
+        <array>
+            <string> “One People, One State, One leader” was the policy of ?</string>
+            <string>Stalin</string>
+            <string>Hitler</string>
+            <string>Lenin</string>
+            <string>Mussolin</string>
+            <string>2</string>
+        </array>
+        <!-- Q10 -->
+        <key>Q10</key>
+        <array>
+            <string>Who among the following appoints the Prime Minister of India?</string>
+            <string>Lok Sabha</string>
+            <string>Rajya Sabha</string>
+            <string>President of India</string>
+            <string>Chief Justice of Supreme Court</string>
+            <string>3</string>
+        </array>
+	</dict>
+</dict>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</plist>
