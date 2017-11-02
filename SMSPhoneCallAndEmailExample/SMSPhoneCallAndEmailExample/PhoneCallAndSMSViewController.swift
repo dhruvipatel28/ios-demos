@@ -5,6 +5,7 @@
 //  Created by moxDroid on 2017-10-26.
 //  Copyright © 2017 moxDroid. All rights reserved.
 //  http://www.vishalvirodhia.com/how-to-send-sms-and-call-in-iphone-apps-ios.html
+//  https://developer.apple.com/documentation/messageui/mfmessagecomposeviewcontroller
 
 import UIKit
 import MessageUI
