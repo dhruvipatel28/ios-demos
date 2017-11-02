@@ -4,7 +4,10 @@
 //
 //  Created by moxDroid on 2017-10-26.
 //  Copyright © 2017 moxDroid. All rights reserved.
-//
+//  https://www.hackingwithswift.com/example-code/uikit/how-to-send-an-email
+//  https://www.andrewcbancroft.com/2014/08/25/send-email-in-app-using-mfmailcomposeviewcontroller-with-swift/
+//  https://stackoverflow.com/questions/40887721/sending-an-email-from-swift-3
+
 
 import UIKit
 import MessageUI
