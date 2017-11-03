@@ -12,18 +12,18 @@ class Location
 {
     var locationId : Int!
     var locationTitle : String!
-    var Latitude : Double!
-    var Longitude : Double!
+    var Latitude : String!
+    var Longitude : String!
     
     init()
     {
         self.locationId = 0
         self.locationTitle = " "
-        self.Latitude = 0.0
-        self.Longitude = 0.0
+        self.Latitude = "0.0"
+        self.Longitude = "0.0"
     }
     
-    func setLocation(_ id : Int , _ title : String , _ lat  : Double , _ long : Double)
+    func setLocation(_ id : Int , _ title : String , _ lat  : String , _ long : String)
     {
         self.locationId = id
         self.locationTitle = title
@@ -33,6 +33,8 @@ class Location
     
     func getLocation(loc : Location)
     {
+        print(loc.locationId )
+        print(loc.locationTitle)
         print("id : \(loc.locationId)  ----   Title : \(loc.locationTitle)")
         print("lat : \(loc.Latitude)  ----   Long : \(loc.Longitude)")
     }

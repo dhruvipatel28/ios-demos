@@ -32,12 +32,17 @@ class SMSAndEmailViewController: UIViewController, MFMessageComposeViewControlle
         {
             let messageVC = MFMessageComposeViewController()
             messageVC.body = "Hello, How are you?"
-            messageVC.recipients = ["+11234567890"]
+            messageVC.recipients = ["+6475684535"]
             messageVC.messageComposeDelegate = self
             self.present(messageVC, animated: false, completion: nil)
         }
     }
     
+    @IBAction func btn_home(_ sender: UIBarButtonItem)
+    {
+        self.dismiss(animated: true, completion: nil)
+
+    }
     
     @IBAction func btn_email(_ sender: UIButton)
     {
@@ -45,9 +50,9 @@ class SMSAndEmailViewController: UIViewController, MFMessageComposeViewControlle
         {
             let MailVC = MFMailComposeViewController()
             MailVC.mailComposeDelegate = self as! MFMailComposeViewControllerDelegate
+            MailVC.setCcRecipients(["dhruvipatel282@gmail.com"])
             MailVC.setSubject(lbl_subject.text!)
             MailVC.setMessageBody(lbl_bodyOfMail.text!, isHTML: true)
-            
             present(MailVC, animated: true, completion: nil)
         }
     }

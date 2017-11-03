@@ -33,6 +33,11 @@ class PhoneCallViewController: UIViewController
         }//if
     }
     
+    @IBAction func btn_home(_ sender: UIBarButtonItem)
+    {
+        self.dismiss(animated: true, completion: nil)
+
+    }
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
