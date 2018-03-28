@@ -1,0 +1,23 @@
+        // create the alert box
+        let alertBox = UIAlertController(title: "ABC", message: "How are you?", preferredStyle: .alert)
+         alertBox.addTextField()
+     
+     
+        // make a button for the alertbox
+        let okButton = UIAlertAction(title: "OK", style: .default, handler:
+        {
+            action in
+            let item = alertBox.textFields?[0].text
+            self.helloLabel.text = item
+        })
+        
+        let cancelButton = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        
+        
+        // add the button to the alertbox
+        alertBox.addAction(okButton)
+        alertBox.addAction(cancelButton)
+        
+        
+        // show the alert box
+        present(alertBox, animated: true)
