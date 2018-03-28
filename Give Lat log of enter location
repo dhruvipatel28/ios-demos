@@ -1,0 +1,39 @@
+        
+        
+        // 1. what do you want to search for?
+        let keyword = searchBox.text!
+        
+        // 2. build a search request
+        let searchRequest = MKLocalSearchRequest()
+        searchRequest.naturalLanguageQuery = keyword
+        
+        // 2b) Tell IOS where on the map to search
+        
+        // my coordinates are for mountain view, california
+        let coord = CLLocationCoordinate2DMake(37.413293, -122.074350)
+        let span = MKCoordinateSpanMake(0.005, 0.005)
+        let regionA = MKCoordinateRegionMake(coord, span)
+        
+        searchRequest.region = regionA
+        
+          // 3. send your search request to Apple
+        let search = MKLocalSearch(request: searchRequest)
+        search.start { (response, error) in
+            
+            //print(response!.boundingRegion)
+            
+            print("-----------------------")
+            
+            let places = response!.mapItems
+            for x in places {
+                
+                let name = x.name!
+                let phone = x.phoneNumber
+                let lat = x.placemark.coordinate.latitude
+                let long = x.placemark.coordinate.longitude
+                
+                //print(String(describing: name))
+                print(name)
+                print("Coordinates: \(lat) , \(long)")
+                
+            }
