@@ -1,0 +1,35 @@
+ var movies = ["Black Panther", "Avengers: Infinity War", 
+              "Shape of the Water", "Padmaavat", "Thugs of Hindostan", "Baaghi 2", "DFJKDFJ"]
+              
+              
+   // logic: add your movie to the array
+  self.movies.append(item!)
+
+  // ui: refresh the table
+  self.tableView.reloadData()
+  
+  
+        // dont' forget to change "myCell" to whatever you called it in the storyboard
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
+        
+        // put some text in each row
+        cell.textLabel?.text = movies[indexPath.row]
+     
+// delete a row of the table
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle
+                    , forRowAt indexPath: IndexPath) 
+    {
+        
+        if editingStyle == .delete 
+        {
+            print("going to delete!")
+            
+            // LOGIC: delete it from the array
+            movies.remove(at: indexPath.row)
+            
+            // UI: delete it from the tableView
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+        }
+        
+    }
