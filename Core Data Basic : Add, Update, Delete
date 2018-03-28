@@ -1,0 +1,106 @@
+// create context
+   
+   let myContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+   
+//  create bean object
+    var movies = [Movie]()   // Movie is table name
+    
+    
+// Core data file path 
+
+  let path = FileManager.default.urls(for:.documentDirectory, in:.userDomainMask)
+  
+
+//  Call loadData() in viewDidLoad 
+
+
+    func saveData() 
+    {
+        // logic - save your stuf to the database
+        do 
+        {
+           try myContext.save()
+        }
+        catch {
+            print("error saving data: \(error)")
+        }
+    }
+    
+    func loadData() 
+    {
+        let request : NSFetchRequest<Movie> = Movie.fetchRequest()
+        do 
+        {
+            movies = try myContext.fetch(request)
+        }
+        catch {
+            print("error saving data: \(error)")
+        }
+    }
+    
+    
+    //---------------------------------------------------
+    
+        // create a new movie object
+            let movie = Movie(context: self.myContext)
+           
+        // set the movie object's properties
+            movie.name = item
+            movie.seen = false
+
+        // add to the array
+            self.movies.append(movie)
+
+        // save the movies object
+            self.saveData()
+
+        // ui: refresh the table
+            self.tableView.reloadData()
+  
+  
+  //---------------------------------------------------
+  
+        // put some text in each row
+        cell.textLabel?.text = movies[indexPath.row].name
+        cell.detailTextLabel?.text = String(movies[indexPath.row].seen)
+        
+        
+   //-----------------------   didSelectRowAt  ----------------------------
+   
+   
+        let m = movies[indexPath.row]
+        if (m.seen == true) {
+            m.seen = false
+        }
+        else {
+            m.seen = true
+        }
+        saveData()
+        tableView.reloadData()
+        
+        
+   //-----------------------   commit editingStyle  ----------------------------
+   
+     if editingStyle == .delete 
+     {
+            // LOGIC: delete it from DB and ARRAY
+            // delete it from DB
+            //  - do the delete
+            
+            myContext.delete(movies[indexPath.row])
+            //  - save YOUR CHANGES!!!!!!!!!!!
+            saveData()
+            
+            // delete it from the array
+            movies.remove(at: indexPath.row)
+            
+            // UI: delete it from the tableView
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+        }
+   
+   
+   
+   
+        
+   
