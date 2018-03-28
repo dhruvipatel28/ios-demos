@@ -1,0 +1,36 @@
+First VC
+
+
+override func prepare(for segue: UIStoryboardSegue, sender: Any?) 
+{
+       // tell swift where to send the data
+        let dest = segue.destination as! ViewControllerA
+        // send the data
+        dest.name = textFieldA.text!
+}
+
+
+// Do not generate click event of button insted 
+
+
+button : Drag and drop to destination VC : Select Show 
+
+
+
+
+//-------------------- Destination VC  ------------------
+
+
+var name = String()
+
+//View Did load
+nameLabel.text = "HELLO \(name)"
+
+
+//------------------   on back press  --------------------
+
+//Button 
+ dismiss(animated:true, completion:nil)
+ 
+ 
+ 
