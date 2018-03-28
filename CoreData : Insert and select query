@@ -1,0 +1,56 @@
+
+
+// Get Context
+
+let myContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
+//table object
+var userA : User?
+
+
+// ------------------------ fatch all data  ----------------
+let request : NSFetchRequest<User> = User.fetchRequest()
+let request : NSFetchRequest<_____> = _____.fetchRequest()
+do 
+{
+  let results = try myContext.fetch(request)
+}
+
+
+// ------------------------  where Query  ----------------
+let query = NSPredicate(format: "name == %@", "marcos.bittencourt")
+request.predicate = query
+
+do 
+{
+   let results = try myContext.fetch(request)
+    if results.count == 0 
+    {
+       print("no results found")
+    }
+    else 
+    {
+       userA = results[0]
+       print((userA!.name)!)
+    }
+}
+
+//--------------------------- Save Data  -------------------
+let person = User(context: myContext)
+person.name = “davidshenoda”
+
+let tweet = Tweet(context: myContext)
+tweet.text = “black panther was awesome #marvel2018”
+tweet.user = person
+
+do 
+{
+      try myContext.save()
+      print("done saving")
+}
+catch
+{
+      print("an error occured while saving: \(error)")
+}
+
+
