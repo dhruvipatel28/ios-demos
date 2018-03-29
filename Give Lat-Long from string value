@@ -1,0 +1,32 @@
+import MapKit
+
+@IBOutlet weak var searchBox: UITextField!
+
+    
+    
+// -------------------   On Search click  ----------------------
+    
+        let keyword = searchBox.text!
+        
+        let searchRequest = MKLocalSearchRequest()
+        searchRequest.naturalLanguageQuery = keyword
+       
+        let coord = CLLocationCoordinate2DMake(37.413293, -122.074350)
+        let span = MKCoordinateSpanMake(0.005, 0.005)
+        let regionA = MKCoordinateRegionMake(coord, span)
+        
+        searchRequest.region = regionA
+        
+        
+        let search = MKLocalSearch(request: searchRequest)
+        search.start { (response, error) in
+            
+            let places = response!.mapItems
+            for x in places
+            {
+                let name = x.name!
+                let phone = x.phoneNumber
+                let lat = x.placemark.coordinate.latitude
+                let long = x.placemark.coordinate.longitude
+                
+            }
