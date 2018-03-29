@@ -1,0 +1,32 @@
+let session : URLSession = .shared
+
+
+let url = URL(string: "https://apiv2.bitcoinaverage.com/indices/global/ticker/BTCCAD")
+
+          let task = session.dataTask(with:url!) { (data, response, error) in
+           
+           if (error != nil) {
+                print(error!.localizedDescription)
+                return
+            }
+            
+           
+            let json = try? JSONSerialization.jsonObject(with:data!, options : [])
+            
+            // 3. PARSING json - choose ARRAY or DICTIONARY
+            // for array, use [String:Any]
+            // for dictionary, user [[String:Any]]
+            if let x = json as? [String:Any]
+            {
+                // get the "open" dictionary (don't forget to cast it to [String:Any])
+                let y = x["open"] as? [String:Any]
+                // get the "week" key
+                let week = y!["week"]
+                //output it to the screen
+                print(week)
+            }
+            
+        }
+        
+        // 3. send the request and Wait for the internet to send you a response
+        task.resume()
