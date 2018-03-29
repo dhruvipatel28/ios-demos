@@ -1,0 +1,75 @@
+import CoreLocation
+
+@IBOutlet weak var locationLabel: UITextField!
+    @IBOutlet weak var weatherLabel: UILabel!
+    @IBOutlet weak var summaryLabel: UILabel!
+    
+    let session : URLSession = .shared
+
+
+//-------- on search click
+
+let location = locationLabel.text!
+        
+let geocoder = CLGeocoder()
+
+geocoder.geocodeAddressString(location) 
+{ (placemarks, error)  in
+
+    if let e = error 
+    {
+        print("got an error while geocoding")
+        return
+    }
+    
+    if placemarks!.count > 0 
+    {
+        let coord = placemarks![0].location
+        print(coord!.coordinate.latitude)
+        print(coord!.coordinate.longitude)
+
+        var latitude = String(coord!.coordinate.latitude)
+        var longitude = String(coord!.coordinate.longitude)
+
+        // get the weather
+        self.getWeather(lat:latitude, long:longitude)
+
+    }
+}
+
+
+// ---------- GET Weather
+
+func getWeather(lat:String, long:String) 
+{
+        
+        let url = URL(string:"https://api.darksky.net/forecast/ff41689fc242d7783a79fab7ae586b2b/\(lat),\(long)/?units=ca")
+        
+        
+        let task = session.dataTask(with: url!)
+        { 
+            (data, response, error) in
+             if (error != nil) 
+             {
+                print(error!.localizedDescription)
+                return
+            }
+            
+            
+            let json = try? JSONSerialization.jsonObject(with: data!, options: [])
+            
+            if let dict = json as? [String:Any] 
+            {
+                let curr = dict["currently"] as! [String:Any]
+                let temp = curr["temperature"] as! Double
+                let summary = curr["summary"] as! String
+            
+                DispatchQueue.main.async 
+                {
+                    self.weatherLabel.text = "\(temp)°C"
+                    self.summaryLabel.text = summary
+                }
+            }
+        }
+        task.resume()
+    }
