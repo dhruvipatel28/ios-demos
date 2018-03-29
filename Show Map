@@ -1,0 +1,28 @@
+import MapKit 
+
+
+@IBOutlet weak var mapView: MKMapView!
+
+
+        // 1. Set the "center" of the map
+        // In example below, the center of the map is Fairview Mall
+       
+       
+       let coord = CLLocationCoordinate2DMake(43.7779, -79.3447)
+        
+        // 2. Set the initial "zoom" level of the map
+        // Larger numbers = zoomed out
+        // Smaller numbers = zoomed in
+        
+        
+        let span = MKCoordinateSpanMake(0.01, 0.01)
+        
+        // 3. Create a region for the map
+      
+      
+        let region = MKCoordinateRegionMake(coord, span)
+        
+        // 4. Set the map's region to variable in step 3
+      
+      
+      mapView.setRegion(region, animated: true)
