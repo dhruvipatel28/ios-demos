@@ -1,0 +1,36 @@
+import MapKit
+
+
+MKMapViewDelegate
+
+
+
+        //------------ View Did LOad
+
+        mapView.delegate = self
+        let coordinate = CLLocationCoordinate2DMake(32.7767,-96.7970)
+        let span = MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)
+        let region = MKCoordinateRegion(center: coordinate, span: span)
+        mapView.setRegion(region, animated: true)
+        
+        createPolyline()
+
+       //------------ createPolyline
+       
+      func createPolyline() 
+      {
+          // make an array of locations (coordinates)
+          var abc = [
+              CLLocationCoordinate2DMake(32.7767, -96.7970),       // dallas, texas
+              CLLocationCoordinate2DMake(37.7833, -122.4167)      // san francisco, california
+          ]
+        
+        
+          // create a polyline
+          let polyline = MKPolyline(coordinates: &abc, count: abc.count)
+        
+        
+          // add the polyline to the map
+          mapView.add(polyline)
+  
+    }
