@@ -1,0 +1,46 @@
+import RealmSwift
+
+class Movie : Object 
+{
+    // class' attributues / properties / variables
+    @objc dynamic var title : String = ""
+}
+
+
+
+
+//---------VC
+
+
+let realm = try! Realm()
+
+
+//--------- Load CLick
+let movies = realm.objects(Movie.self)
+
+
+//---------- Save CLick
+
+let movieName = textField.text!
+        if (movieName.isEmpty == true)
+        {
+            print("ERROR - please enter a movie name")
+            return
+        }
+        
+        // save it to the database
+        let movie = Movie()
+        movie.title = movieName
+        
+        do  
+        {
+            try realm.write 
+            {
+                realm.add(movie)
+                print("added the movie to the database")
+            }
+        }
+        catch 
+        {
+            print("\(error)")
+        }
