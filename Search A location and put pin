@@ -1,0 +1,48 @@
+import MapKit
+
+
+    // -- MARK: Outlets
+    @IBOutlet weak var searchBox: UITextField!
+    @IBOutlet weak var mapView: MKMapView!
+
+
+    // -- MARK: Action
+    @IBAction func searchButtonClicked(_ sender: Any) 
+    
+    {
+       
+        let keyword = searchBox.text!
+        
+        let searchRequest = MKLocalSearchRequest()
+        searchRequest.naturalLanguageQuery = keyword
+        
+        let coord = CLLocationCoordinate2DMake(37.413293, -122.074350)
+        let span = MKCoordinateSpanMake(0.005, 0.005)
+        let regionA = MKCoordinateRegionMake(coord, span)
+        
+        //mapView.setRegion(regionA, animated: true)
+        searchRequest.region = regionA
+        
+        // 3. send your search request to Apple
+        let search = MKLocalSearch(request: searchRequest)
+        search.start { (response, error) in
+            
+          
+            let places = response!.mapItems
+            for x in places
+            {
+                
+                let name = x.name!
+                let phone = x.phoneNumber
+                let lat = x.placemark.coordinate.latitude
+                let long = x.placemark.coordinate.longitude
+                
+           
+                // add pins to your map
+                let pin = MKPointAnnotation()
+                pin.coordinate = CLLocationCoordinate2DMake(lat, long)
+                pin.title = name
+                self.mapView.addAnnotation(pin)
+                
+            }
+        }
