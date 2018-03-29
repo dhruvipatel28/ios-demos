@@ -1,0 +1,74 @@
+import MapKit
+import CoreLocation  
+
+MKMapViewDelegate, CLLocationManagerDelegate 
+
+    var manager : CLLocationManager!
+    var myLocations: [CLLocation] = []
+    
+    
+    
+    //View DId Load
+    
+     manager = CLLocationManager()
+     manager.delegate = self
+     manager.desiredAccuracy = kCLLocationAccuracyBest
+     manager.requestAlwaysAuthorization()
+     manager.startUpdatingLocation()
+     
+     mapView.delegate = self
+     mapView.mapType = MKMapType.standard
+     mapView.showsUserLocation = true
+     
+     
+     //didUpdateLocations
+     
+     let lastPosition = locations.count-1
+     label.text = "\(locations[lastPosition])"
+     
+     let coordinate = mapView.userLocation.coordinate
+     let span = MKCoordinateSpan(latitudeDelta: 0.007, longitudeDelta: 0.007)
+     let region = MKCoordinateRegion(center: coordinate, span: span)
+     mapView.setRegion(region, animated: true)
+     
+     myLocations.append(locations[0] as CLLocation)
+     
+     if (myLocations.count > 2)
+     {
+            let i = myLocations.count - 1     // most recent position (now)
+            let j = myLocations.count - 2     // second most recent position (1 second ago)
+        
+            let pos1 = myLocations[i].coordinate
+            let pos2 = myLocations[j].coordinate
+        
+            var abc = [pos1, pos2]
+        
+            // create a polyline
+            let polyline = MKPolyline(coordinates: &abc, count: abc.count)
+        
+            // add the polyline to the map
+            mapView.add(polyline)
+        }
+        
+        
+        
+        //RendererFor overlay
+        
+        if (overlay is MKPolyline) 
+        {
+            let renderer = MKPolylineRenderer(overlay: overlay)
+            
+            // pick a color for your line
+            renderer.strokeColor = UIColor.magenta
+            
+            // pick a width for your line
+            renderer.lineWidth = 2
+            
+            return renderer
+            
+        }
+        return MKOverlayRenderer()
+        
+        
+        
+
